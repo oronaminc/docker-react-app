@@ -12,11 +12,11 @@ services:
 # Script 를 실행 할수 있는 환경
 before_install:
   - echo "start Creating an image with dockfile."
-  - docker build -t deutschkihun/docker-react-app -f Dockerfile.dev .
+  - docker build -t sunghyeon/docker-react-app -f Dockerfile.dev .
 
 # 실행할 Script(테스트 실행)
 script:
-  - docker run -e CI=true deutschkihun/docker-react-app npm run test -- --coverage
+  - docker run -e CI=true sunghyeon/docker-react-app npm run test -- --coverage
 
 # 테스트 성공후 할일
 after_success:
