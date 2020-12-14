@@ -1,11 +1,23 @@
-sudo: required
+#sudo: required
+os: linux
+
 language: generic
+
+dist: Bionic
+
+# docker 환경 구성
 services:
   - docker
+
+# Script 를 실행 할수 있는 환경
 before_install:
-  - echo "start creating an image with dockerfile"
-  - docker build -t sunghyeon/docker-react-app Dockerfile.dev .
+  - echo "start Creating an image with dockfile."
+  - docker build -t deutschkihun/docker-react-app -f Dockerfile.dev .
+
+# 실행할 Script(테스트 실행)
 script:
-  - docker run -e CI=true sunghyeon/docker-react-app npm run test -- --coverage
+  - docker run -e CI=true deutschkihun/docker-react-app npm run test -- --coverage
+
+# 테스트 성공후 할일
 after_success:
-  - echo "Test Susccess"
+  - echo "Test Success"
